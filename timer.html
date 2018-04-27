@@ -1,0 +1,75 @@
+<html>
+<head>
+<script crossorigin src="https://unpkg.com/react@15/dist/react.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+</head>
+
+<body>
+    
+        <div id="container"></div>
+
+
+    <script type="text/babel">
+
+    var container = document.querySelector("#container");
+
+    var CounterLabel = React.createClass({
+
+        getInitialState: function() {
+            return {
+                counter: 0,
+                largeCounter: 10
+            }
+        },
+
+        timerTick: function() {
+            this.setState({
+                counter: this.state.counter + 1,
+                largeCounter: this.state.largeCounter + 10
+            });
+        },
+
+        componentDidMount: function() {
+            setInterval(this.timerTick,1000);     
+        },
+
+        render: function() {
+
+            var counterLabelStyle = {
+                backgroundColor:'yellow',
+                width:100,
+                height:50,
+                fontSize:32
+            }
+
+            return (
+                <div style={counterLabelStyle}>
+                <p>{this.state.counter}</p>
+                </div>
+            )
+        }
+    });
+
+    var counterLabelArray = [];
+
+    for(var i = 1; i<=10; i++) {
+        counterLabelArray.push(<CounterLabel key =  {"counter" + i} />);
+    }
+
+
+    ReactDOM.render(
+        <div>
+        {counterLabelArray}
+        </div>,
+        container
+    )   
+
+
+
+    </script>
+
+</body>
+
+</html>

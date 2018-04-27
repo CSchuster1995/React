@@ -1,0 +1,81 @@
+<html>
+<head>
+<script crossorigin src="https://unpkg.com/react@15/dist/react.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        
+</head>
+        
+<body>
+            
+    <div id="container"></div>
+        
+        
+    <script type="text/babel">
+        
+            var container = document.querySelector("#container");
+
+            var StepperDisplay = React.createClass({
+
+                render: function() {
+                    return (
+                        <div>{this.props.counter}</div>
+                    );
+                }
+            });
+
+
+            var StepperView = React.createClass({
+
+                getInitialState: function () {
+                    return {
+                        counter: 0 
+                    }
+                },
+
+                increase: function() {
+                    this.setState({
+                        counter: this.state.counter + 1
+                    });
+                },
+
+                decrease: function() {
+                    this.setState({
+                        counter: this.state.counter -1
+                    });
+                },
+
+                render: function () {
+
+                    var stepperViewStyle = {
+                        backgroundColor: 'red',
+                        width:100,
+                        height:100,
+                        fontSize:32,
+                        color:'white',
+                        textAlign:'center'
+
+                    }
+
+                    return(
+                        <div style ={stepperViewStyle}>
+                        <StepperDisplay counter={this.state.counter} />
+                        <button onClick={this.increase}>+</button>
+                        <button onClick={this.decrease}>-</button>
+                        </div>
+                    );
+                }
+            });
+
+
+            ReactDOM.render(
+                <StepperView />,
+                container
+            );
+        
+    
+    
+    
+    
+</script>
+</body>
