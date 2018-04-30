@@ -1,0 +1,51 @@
+<html>
+    <head>
+            <script crossorigin src="https://unpkg.com/react@15/dist/react.js"></script>
+            <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    </head>
+
+<body>
+    
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+    var container = document.querySelector("#container");
+
+
+
+    var TodoList = React.createClass({
+
+            addTask :function() {
+                console.log(this._inputElement.value);
+
+                this._inputElement.value = "";
+
+            },
+
+
+
+        render: function() {
+            return(
+                <div>
+                <input ref={(a) => this._inputElement = a} type="text"/>
+                <button onClick={this.addTask}>Add Task</button>
+                </div>
+
+            )
+            
+        }
+    });
+
+        ReactDOM.render(
+            <TodoList />,
+            container
+        );
+
+
+    </script>
+
+
+</body>
+</html>
